@@ -2,7 +2,7 @@ packaging==24.2
 gunicorn==22.0.0
 pandas==2.2.3
 numpy==2.2.0
-sklearn==1.6.1
+scikit-learn==1.4.2
 pickle
 flask==3.1.0
 wheel==0.38.4
