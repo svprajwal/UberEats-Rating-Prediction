@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uber Eats Rating Prediction</title>  
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 600px;
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .login-container h2 {
+        margin-bottom: 30px;
+        color: #333333;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        width: 50%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    
+    ::placeholder {
+        text-align: center;
+    }
+
+    h2{
+        font-size:30px !important;
+        padding-top: -10px;
+    }
+
+    /* Style for the textbox */
+    input[type="text"] {
+        text-align: center;
+        font-size: 17px;
+    }
+
+    .login-container input[type="submit"] {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .login-container input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .login-container .signup-link {
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    /* Style for the magical appear message */
+    .magical-message {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0;
+            animation: appear 2s forwards;
+        }
+
+    /* Keyframes for the magical appear animation */
+    @keyframes appear {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    label{
+        display:inline-block;
+        width:200px;
+        margin-right:30px;
+        text-align:right;
+    }
+
+    .forms{
+        font-size: 20px;
+        margin: auto;
+        padding-right: 20%;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="login-container">
+    <img src="{{url_for('static', filename='UberEatsLogo1.png')}}" />
+    <h2>Uber Eats Rating Prediction</h2>
+    <form action="/" method="post">
+        <div class="forms">
+            <label>Votes : </label>
+            <input type="text" id="Votes_value" name="Votes_value" accept=".txt" value="{{ Votes_value }}">
+            <br><br>
+            <label> Average Cost for 2 : </label>
+            <input type="text" id="Average_Cost_value" name="Average_Cost_value" accept=".txt" value="{{ Average_Cost_value }}">
+            <br><br>
+            <label>Price Range :</label>
+            <input type="text" id="Price_range_value" name="Price_range_value" accept=".txt" value="{{ Price_range_value }}">
+        </div>
+        <br><br>
+        <input type="submit" value="Predict Rating">
+    </form>
+    {% if rating %}
+    <br><br>
+    <div class="magical-message">
+        Rating : {{ rating }}
+    </div>
+
+    {% else %}
+    <br><br>
+    <br><br>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
